@@ -1,4 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+using TodoListApi.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+//adding connection with mssql database
+var connectionString = builder.Configuration.GetConnectionString("ToDoListConnection");
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
 
 // Add services to the container.
 
